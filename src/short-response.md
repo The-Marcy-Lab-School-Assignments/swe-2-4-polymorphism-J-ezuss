@@ -1,6 +1,7 @@
 # Short Responses
 
 For this short response assignment, aim to write a response with the following qualities (your instructor will give you feedback on these areas):
+
 - [] Addresses all parts of the prompt
 - [] Accurately uses relevant technical terminology
 - [] Is free of grammar and spelling mistakes (double check with grammarly!)
@@ -25,7 +26,7 @@ class Shape {
 
 class Circle extends Shape {
   constructor(radius) {
-    super('circle');
+    super("circle");
     this.radius = radius;
   }
   getArea() {
@@ -35,7 +36,7 @@ class Circle extends Shape {
 
 class Square extends Shape {
   constructor(side) {
-    super('square');
+    super("square");
     this.side = side;
   }
   getArea() {
@@ -51,7 +52,7 @@ Explain how this code demonstrates **polymorphism**. Why can we call `getArea()`
 
 ## Response 1
 
----
+This code shows polymorphism because both Circle and Square are Shapes and they each have their own getArea() method. So we can just call getArea() on any shape and it works without checking what type it is.
 
 ## Prompt 2
 
@@ -62,8 +63,8 @@ class Media {
   constructor(title) {
     this.title = title;
   }
-  play() { 
-    return `Playing media: ${this.title}`; 
+  play() {
+    return `Playing media: ${this.title}`;
   }
 }
 
@@ -90,10 +91,10 @@ class Podcast {
 const playlist = [
   new Song("Thriller", "Michael Jackson"),
   new Podcast("CodeNewbie", "Saron Yitbarek"),
-  new Media("voice-memo.mp3")
+  new Media("voice-memo.mp3"),
 ];
 
-playlist.forEach(item => {
+playlist.forEach((item) => {
   if (item instanceof Song) {
     console.log(item.playSong());
   } else if (item instanceof Podcast) {
@@ -111,3 +112,7 @@ This code works, but it has some problems. Answer the following:
 3. Explain what would happen if you wanted to add a new `Video` class. Compare how much work it would take with the original code versus your improved version.
 
 ## Response 2
+
+We can make Song and Podcast inherit from Media and just override the play() method. Then in the playlist, we dont need all those instanceof checks anymore, we can just call play() on every item and it’ll do the right thing automatically.
+
+If we add a new Video class, we just make it extend Media and give it its own play() method. Then it works in the same loop with no extra code. Before, we’d have to add another else if for Video, which is annoying and repetitive.
